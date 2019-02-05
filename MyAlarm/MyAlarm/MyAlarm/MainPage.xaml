@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MyAlarm"
+             x:Class="MyAlarm.MainPage">
+
+    <StackLayout>
+        <!-- Place new controls here -->
+        <Label Text="Welcome to Xamarin.Forms!" 
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand" />
+        <Button x:Name="btn_set_alarm"
+                Text="Set alarm 1min later"
+                Clicked="Button_Clicked" />
+        <Button x:Name="btn_stop_alarm"
+                Text="Stop alarm" 
+                Clicked="Btn_stop_alarm_Clicked"/>
+    </StackLayout>
+
+</ContentPage>
