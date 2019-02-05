@@ -17,7 +17,7 @@ namespace MyAlarm.Droid
     [Service]
     class StartAlarmService : IntentService
     {
-        private MediaPlayer mediaPlayer;
+        static private MediaPlayer mediaPlayer;
 
         public override IBinder OnBind(Intent intent)
         {
@@ -44,14 +44,11 @@ namespace MyAlarm.Droid
             if (intent != null && intent.GetBooleanExtra("alarm", false))
             {
                 mediaPlayer = MediaPlayer.Create(this, Settings.System.DefaultAlarmAlertUri);
-                mediaPlayer.Completion +=
-                    (object sender, System.EventArgs e) =>
-                    {
-                        mediaPlayer.Release();
-                        mediaPlayer.Start();
-                    };
+                mediaPlayer.Looping = true;
                 mediaPlayer.Start();
-                StartActivity(new Intent(this, typeof(MainActivity)));
+                Intent newintent = new Intent(this, typeof(MainActivity));
+                newintent.SetFlags(ActivityFlags.NewTask);
+                StartActivity(newintent);
             }
             else
             {
